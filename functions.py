@@ -16,15 +16,6 @@ def ToDo(*args):
     elif args[0] == 6:
         DelStd(args[1],args[2])
     
-    """options = {1 : AddStd(args[1],args[2],args[3],args[4],args[5]),
-               2 : FindStd(args[1],args[2]),
-               3 : DispStd,
-               4 : DispFewStd,
-               5 : ModifyStd,
-               6 : DelStd,
-               7 : exit}
-    print(type(options))
-    options[args[0]]"""
 
 def AddStd(first_name,last_name,age,sex,major):
     print("\nAddStd function\n")
