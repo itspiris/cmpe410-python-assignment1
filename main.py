@@ -1,7 +1,7 @@
 import student_class
 import functions
 
-s1 = student_class.Student("piris","the assistant",20,"male","computer engineer")
+s1 = student_class.Student("Firas","Abuzahra",20,"Male","Computer Engineer")
 functions.students.append(s1)
 print()
 
@@ -9,11 +9,12 @@ def options():
     print("Enter the integer corresponding to what you need: ")
     print("\t1 : Add a student\n\t2 : Find a specific student\n\t3 : Display all students stored")
     print("\t4 : Display students in certain age range\n\t5 : Modify an attribute of a specific student")
-    print("\t6 : Delete a student with a specific first name-last name\n\t7 : exit")
+    print("\t6 : Delete a student with a specific first name-last name\n\t7 : Write data to a file")
+    print("\t8 : Read data from file\n\t9 : exit")
 options()
 choice = int(input("\nAction: "))
 print()
-while choice != 7:
+while choice != 9:
     if choice == 1:
         fname = input("Enter first name of student: ")
         lname = input("Enter last name of student: ")
@@ -39,10 +40,15 @@ while choice != 7:
         name = input("Name of student to be deleted: ")
         surname = input("Surname of student to be deleted: ")
         functions.ToDo(choice,name,surname)
+    elif choice == 7:
+        functions.ToDo(choice,s1)
+    elif choice == 8:
+        functions.ToDo(choice,s1)
     
     print()
     options()
     choice = int(input("\nAction : "))
     print()
 
+print("Goodbye!")
 print()
