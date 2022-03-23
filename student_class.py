@@ -1,3 +1,5 @@
+import functions
+
 class Student:
     def __init__(self,first_name,last_name,age,sex,major):
         self.fname = first_name
@@ -18,6 +20,7 @@ class Student:
         return att
 
     def setAttb(self,attribute,value):
+        attribute = attribute.lower()
         if attribute == "first name":
             self.fname = value
             return self.fname
@@ -36,4 +39,42 @@ class Student:
         else:
             print("wrong attribute entered")
 
+    def write_data_to_file(self):
+        try:
+            with open('studentsList.txt', 'w') as f:
+                for student in functions.students:
+                    f.write("Name: " + student.fname +
+                            " Surname: " + student.lname +
+                            " Age: {0} ".format(student.age) +
+                            " Sex: " + student.sex +
+                            " Major: " + student.major +
+                            "\n")
+            f.close()
+        except IOError:
+            print("File not found or path is incorrect")
 
+    def read_data_from_a_file(self):
+        def string(s):
+            return s
+        try:
+            my_file = open('studentsList.txt', 'r')
+            for line in my_file:
+                name, surname, age, sex, major = map(string, [x for x in line.split() if x.find(':') == -1])
+                functions.students.append(Student(name, surname, age, sex, major))
+
+            my_file.close()
+
+        except IOError:
+            print("File not found or path is incorrect")
+
+        except ValueError:
+            try:
+                my_file = open('studentsList.txt', 'r')
+                for line in my_file:
+                    name, surname, age, sex, major, xtra = map(string, [x for x in line.split() if x.find(':') == -1])
+                    functions.students.append(Student(name, surname, age, sex, major))
+
+                my_file.close()
+
+            except:
+                quit
