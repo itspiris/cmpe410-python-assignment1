@@ -59,22 +59,17 @@ class Student:
         try:
             my_file = open('studentsList.txt', 'r')
             for line in my_file:
-                name, surname, age, sex, major = map(string, [x for x in line.split() if x.find(':') == -1])
-                functions.students.append(Student(name, surname, age, sex, major))
-
+                # if major is two words, line.split() will have 2 elements for the major
+                # so we check whether that is the case or if the major is only 1 word
+                # and accordingly we give enough variables to the map() funcion 
+                if len(line.split()) > 10:
+                    name, surname, age, sex, major, xtra = map(string, [x for x in line.split() if x.find(':') == -1])
+                    functions.students.append(Student(name, surname, age, sex, major+" "+xtra))
+                else:
+                    name, surname, age, sex, major = map(string, [x for x in line.split() if x.find(':') == -1])
+                    functions.students.append(Student(name, surname, age, sex, major))
+            
             my_file.close()
-
+            
         except IOError:
             print("File not found or path is incorrect")
-
-        except ValueError:
-            try:
-                my_file = open('studentsList.txt', 'r')
-                for line in my_file:
-                    name, surname, age, sex, major, xtra = map(string, [x for x in line.split() if x.find(':') == -1])
-                    functions.students.append(Student(name, surname, age, sex, major))
-
-                my_file.close()
-
-            except:
-                quit
