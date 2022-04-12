@@ -3,7 +3,7 @@ floats = [] #store floats of the text file
 strings = [] #store strings of the text file
 table = [] #used to store pairs of lexeme-token in a tuple
 def lex(line):
-    for element in elements:
+    for element in line:
         try: #if element is integer no error will occur, otherwise ValueError error will be caught by the except
             int(element)
             integers.append(element)
